@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1037422837691",
+    "firebase_url": "https://fir-project-1b0b9.firebaseio.com",
+    "project_id": "fir-project-1b0b9",
+    "storage_bucket": "fir-project-1b0b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037422837691:android:88c9d65a8c23491f",
+        "android_client_info": {
+          "package_name": "com.example.bahid.firebase_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1037422837691-054b94ekm3vhh3ulsik5un95qc15c16i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bahid.firebase_chat",
+            "certificate_hash": "6926ca9ae27327ad57a92f32a3456c895e847349"
+          }
+        },
+        {
+          "client_id": "1037422837691-30rl2uhpahpc46sf162ot99putsfedku.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsXpcsx64La5khfuyusGDlHUtIUS0H0ao"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1037422837691-30rl2uhpahpc46sf162ot99putsfedku.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
