@@ -31,7 +31,7 @@ public class DiscussionActivity extends AppCompatActivity {
     ArrayList<String> listConversation = new ArrayList<>();
     ArrayAdapter arrayAdapter;
 
-    String UserName, SelectedTopic, user_msg_key;
+    String PhoneNumber, SelectedTopic, user_msg_key;
 
     private DatabaseReference dbr;
 
@@ -48,14 +48,14 @@ public class DiscussionActivity extends AppCompatActivity {
                     // init adapter to use listConservation array
         lvDiscussion.setAdapter(arrayAdapter); // integrate the adapter into the listview
 
-        this.UserName = getIntent().getExtras().get("user_name").toString();
+        this.PhoneNumber = getIntent().getExtras().get("phone_number").toString();
         this.SelectedTopic = getIntent().getExtras().get("selected_topic").toString();
 
 
         setTitle("Topic: " + this.SelectedTopic);
 
 
-        dbr = FirebaseDatabase.getInstance().getReference().child(this.SelectedTopic);
+        dbr = FirebaseDatabase.getInstance().getReference().child("Chat Rooms").child(this.SelectedTopic);
 
         // **************************************************
         // now code the button logic
@@ -69,7 +69,7 @@ public class DiscussionActivity extends AppCompatActivity {
                 DatabaseReference dbr2 = dbr.child(user_msg_key);
                 Map<String, Object> map2 = new HashMap<>();
                 map2.put("msg", etMsg.getText().toString());
-                map2.put("user", UserName);
+                map2.put("user", PhoneNumber);
                 dbr2.updateChildren(map2);
             }
         });

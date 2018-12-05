@@ -29,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
     ListView lvDiscussionTopics;
     ArrayList<String> listOfDiscussion = new ArrayList<String>();
     ArrayAdapter arrayAdapter;
-    String Username;
+    String PhoneNumber;
 
     private DatabaseReference dbr = FirebaseDatabase.getInstance()
-            .getReference().getRoot();
+            .getReference().child("Chat Rooms");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +44,12 @@ public class MainActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, listOfDiscussion); // initialize
         lvDiscussionTopics.setAdapter(arrayAdapter); // arrayAdapter is empty at this stage
 
-        getUsername(); // sets this->username from EditText
+        PhoneNumber = getIntent().getExtras().get("phone_number_SignIn").toString();
+
 
         //********************************************************************
-        // dbr is the root: we are reading the children of the roots which are basically the topics
-        // we use a listview to represent those topics
+        // we are reading the children of node "Chat Rooms"
+        // we use a listview to represent those rooms
         dbr.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -77,39 +78,13 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(getApplicationContext(), DiscussionActivity.class);
                 i.putExtra("selected_topic", ((TextView)view).getText().toString());
-                i.putExtra("user_name", Username);
+                i.putExtra("phone_number", PhoneNumber);
                 startActivity(i);
             }
         });
         //********************************************************************
 
-
-
-
     }
 
-    private void getUsername(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this); // alert box
-        final EditText userName = new EditText(this); // input text-line on the alert box
 
-        builder.setView(userName);
-
-        // OK button:
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Username = userName.getText().toString();
-            }
-        });
-
-        // Cancel button:
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                getUsername(); // we force the inputting a username. cant sign in without username
-            }
-        });
-
-        builder.show();
-    }
 }
