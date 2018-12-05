@@ -112,6 +112,7 @@ public class DiscussionActivity extends AppCompatActivity {
             msg  = ((DataSnapshot)i.next()).getValue().toString();
             user = ((DataSnapshot)i.next()).getValue().toString();
 
+
             conversation = user + ": " + msg;
             arrayAdapter.insert(conversation, arrayAdapter.getCount());
             arrayAdapter.notifyDataSetChanged();

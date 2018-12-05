@@ -49,7 +49,6 @@ public class SignIn extends AppCompatActivity {
 
     private void InitializeViews()
     {
-        System.out.print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         btnSignIn = findViewById(R.id.buttonSignIn_Login);
         btnSignUp = findViewById(R.id.buttonSignUp_Login);
         etPhoneNumber = findViewById(R.id.editTextPhone_Login);

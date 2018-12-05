@@ -26,7 +26,7 @@ import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView lvDiscussionTopics;
+    ListView lvDiscussionTopics, lvFeatures;
     ArrayList<String> listOfDiscussion = new ArrayList<String>();
     ArrayAdapter arrayAdapter;
     String PhoneNumber;
@@ -40,12 +40,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         lvDiscussionTopics = (ListView) findViewById(R.id.lvDiscussionTopics); // initialize
+        lvFeatures = (ListView) findViewById(R.id.lvFeatures); // initialize
+        FillFeaturesLV();
         arrayAdapter = new ArrayAdapter(this,
                 android.R.layout.simple_list_item_1, listOfDiscussion); // initialize
         lvDiscussionTopics.setAdapter(arrayAdapter); // arrayAdapter is empty at this stage
 
         PhoneNumber = getIntent().getExtras().get("phone_number_SignIn").toString();
-
 
         //********************************************************************
         // we are reading the children of node "Chat Rooms"
@@ -83,7 +84,40 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //********************************************************************
+        lvFeatures.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selected_feature = ((TextView) view).getText().toString();
+                if (selected_feature.equals("Compose Message"))
+                {
+                   // go to send activity
+                    Intent i = new Intent(getApplicationContext(), SendMessage.class);
+                    i.putExtra("message_from", PhoneNumber);
+                    startActivity(i);
+                }
+                else if (selected_feature.equals("Inbox"))
+                {
+                    Intent i = new Intent(getApplicationContext(), Inbox.class);
+                    i.putExtra("to_inbox", PhoneNumber);
+                    startActivity(i);
+                }
 
+
+
+            }
+        });
+
+
+    }
+
+    private void FillFeaturesLV() {
+        ArrayAdapter adap = new ArrayAdapter(this, android.R.layout.simple_list_item_1);
+        ArrayList<String> features = new ArrayList<>();
+        features.add("Compose Message");
+        features.add("Inbox");
+        lvFeatures.setAdapter(adap);
+        adap.addAll(features);
+        adap.notifyDataSetChanged();
     }
 
 

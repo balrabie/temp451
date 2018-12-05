@@ -18,22 +18,33 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".SignUp"
-            android:label="Create Account"></activity>
+            android:label="Create Account" />
         <activity
             android:name=".DiscussionActivity"
             android:label="Welcome" />
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".SignIn"
             android:label="Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".temp"></activity>
+        <activity android:name=".temp" />
+        <activity
+            android:name=".DisplayUsers"
+            android:label="Registered Users"
+            ></activity>
+        <activity
+            android:name=".SendMessage"
+            android:label="Compose Message">
+
+        </activity>
+        <activity
+            android:name=".Inbox"
+            android:label="Inbox">
+        </activity>
     </application>
 
 </manifest>
